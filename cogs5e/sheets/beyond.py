@@ -199,13 +199,13 @@ class BeyondSheetParser:
 
         for val in self.character['characterValues']:
             if val['typeId'] == 1:  # AC override
-                return val['value']
+                return (isinstance(val['value'],(str, type(None))) if val['value'] else 0)
             elif val['typeId'] == 2:  # AC magic bonus
-                miscBonus += val['value']
+                miscBonus += (isinstance(val['value'],(str, type(None))) if val['value'] else 0)
             elif val['typeId'] == 3:  # AC misc bonus
-                miscBonus += val['value']
+                miscBonus += (isinstance(val['value'],(str, type(None))) if val['value'] else 0)
             elif val['typeId'] == 4:  # AC+DEX override
-                base = val['value']
+                base = (isinstance(val['value'],(str, type(None))) if val['value'] else 0)
 
         if armortype is None:
             return base + unarmoredBonus + shield + miscBonus
