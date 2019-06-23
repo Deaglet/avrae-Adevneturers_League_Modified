@@ -1067,7 +1067,7 @@ class SheetManager(commands.Cog):
             sheet = await parser.get_sheet()
         except Exception as e:
             traceback.print_exception(type(e), e, e.__traceback__, file=sys.stderr)
-            return await loading.edit(content='Error: Invalid character sheet1.\n' + str(e))
+            return await loading.edit(content='Error: Invalid character sheet.\n' + str(e))
 
         try:
             await loading.edit(content=
@@ -1112,7 +1112,7 @@ class SheetManager(commands.Cog):
             sheet = parser.get_sheet()
         except Exception as e:
             traceback.print_exception(type(e), e, e.__traceback__, file=sys.stderr)
-            return await loading.edit(content='Error: Invalid character sheet2.\n' + str(e))
+            return await loading.edit(content='Error: Invalid character sheet.\n' + str(e))
 
         await loading.edit(content='Loaded and saved data for {}!'.format(character['name']))
 
