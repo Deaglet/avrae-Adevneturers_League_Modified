@@ -647,7 +647,7 @@ class SheetManager(commands.Cog):
         except Exception as e:
             log.warning(
                 f"Failed to import character\n{''.join(traceback.format_exception(type(e), e, e.__traceback__))}")
-            return await loading.edit(content='Error: Invalid character sheet.\n' + str(e))
+            return await loading.edit(content='Error: Invalid character sheet1.\n' + str(e))
 
         try:
             if sheet_type == 'dicecloud':
@@ -667,13 +667,13 @@ class SheetManager(commands.Cog):
             log.info(f"Exception in parser.get_sheet: {e}")
             log.debug('\n'.join(traceback.format_exception(type(e), e, e.__traceback__)))
             return await loading.edit(content=
-                                      'Invalid character sheet. '
+                                      'Invalid character sheet2. '
                                       'If you are using a dicecloud sheet, '
                                       'make sure you have shared the sheet so that anyone with the '
                                       'link can view.')
         except Exception as e:
             del parser
-            return await loading.edit(content='Error: Invalid character sheet.\n' + str(e))
+            return await loading.edit(content='Error: Invalid character sheet3.\n' + str(e))
 
         sheet = sheet['sheet']
         sheet['settings'] = old_character.get('settings', {})
