@@ -302,7 +302,7 @@ class BeyondSheetParser:
             print("Mod Bonus: ")
             print(modBonus)
 
-            
+
             dmgBonus = modBonus + magicBonus + weirdBonuses['damage']
             toHitBonus = (prof if isProf else 0) + magicBonus + weirdBonuses['attackBonus']
 
@@ -322,7 +322,8 @@ class BeyondSheetParser:
                          f"{'^' if itemdef['magic'] or weirdBonuses['isPact'] else ''}]"
 
             attack = {
-                'attackBonus': str(weirdBonuses['attackBonusOverride'] or modBonus + toHitBonus),
+                # 'attackBonus': str(weirdBonuses['attackBonusOverride'] or modBonus + toHitBonus),
+                'attackBonus': str(modBonus + toHitBonus),
                 'damage': damage,
                 'name': itemdef['name'],
                 'details': html2text.html2text(itemdef['description'], bodywidth=0).strip()
