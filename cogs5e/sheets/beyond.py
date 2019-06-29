@@ -291,17 +291,12 @@ class BeyondSheetParser:
                 'details': atkIn['snippet']
             }
         elif atkType == 'item':
-            print("Iaction")
             itemdef = atkIn['definition']
             weirdBonuses = self.get_specific_item_bonuses(atkIn['id'])
             isProf = self.get_prof(itemdef['type']) or weirdBonuses['isPact']
             magicBonus = sum(
                 m['value'] for m in itemdef['grantedModifiers'] if m['type'] == 'bonus' and m['subType'] == 'magic')
-            print("item definition")
-            print(itemdef)
             modBonus = self.get_relevant_atkmod(itemdef) if not weirdBonuses['isHex'] else self.stat_from_id(6)
-            print("Mod Bonus: ")
-            print(modBonus)
 
 
             dmgBonus = modBonus + magicBonus + weirdBonuses['damage']
@@ -323,8 +318,7 @@ class BeyondSheetParser:
                          f"{'^' if itemdef['magic'] or weirdBonuses['isPact'] else ''}]"
 
             attack = {
-                # 'attackBonus': str(weirdBonuses['attackBonusOverride'] or modBonus + toHitBonus),
-                'attackBonus': str(modBonus + toHitBonus),
+                'attackBonus': str(weirdBonuses['attackBonusOverride'] or modBonus + toHitBonus),
                 'damage': damage,
                 'name': itemdef['name'],
                 'details': html2text.html2text(itemdef['description'], bodywidth=0).strip()
