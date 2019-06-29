@@ -291,10 +291,13 @@ class BeyondSheetParser:
             print("Iaction")
             itemdef = atkIn['definition']
             weirdBonuses = self.get_specific_item_bonuses(atkIn['id'])
+            print("Weird")
             print(weirdBonuses)
             isProf = self.get_prof(itemdef['type']) or weirdBonuses['isPact']
             magicBonus = sum(
                 m['value'] for m in itemdef['grantedModifiers'] if m['type'] == 'bonus' and m['subType'] == 'magic')
+            print("item definition")
+            print(itemdef)
             modBonus = self.get_relevant_atkmod(itemdef) if not weirdBonuses['isHex'] else self.stat_from_id(6)
 
             dmgBonus = modBonus + magicBonus + weirdBonuses['damage']
