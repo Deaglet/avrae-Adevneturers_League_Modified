@@ -161,7 +161,9 @@ class BeyondSheetParser:
     def get_stat(self, stat, base=0):
         """Calculates the final value of a stat, based on modifiers and feats."""
         if stat in self.set_calculated_stats:
+            print("set")
             return self.calculated_stats[stat]
+        print("bonus")
         bonus = self.calculated_stats[stat]
         return base + bonus
 
