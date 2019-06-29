@@ -253,7 +253,6 @@ class BeyondSheetParser:
             'details': None
         }
         if atkType == 'action':
-            print("action")
             if atkIn['dice'] is None:
                 return []  # thanks DDB
             isProf = atkIn['isProficient']
@@ -269,7 +268,6 @@ class BeyondSheetParser:
                 'details': atkIn['snippet']
             }
         elif atkType == 'customAction':
-            print("Caction")
             isProf = atkIn['isProficient']
             dmgBonus = (atkIn['fixedValue'] or 0) + (atkIn['damageBonus'] or 0)
             atkBonus = None
@@ -308,6 +306,7 @@ class BeyondSheetParser:
             if is_melee and is_one_handed:
                 dmgBonus += self.get_stat('one-handed-melee-attacks-damage')
             if not is_melee and is_weapon:
+                print(self.get_stat("ranged-weapon-attacks"))
                 toHitBonus += self.get_stat('ranged-weapon-attacks')
 
             damage = None
