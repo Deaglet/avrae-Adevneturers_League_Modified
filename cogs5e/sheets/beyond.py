@@ -40,9 +40,12 @@ SIMPLE_WEAPONS = ["Club", "Dagger", "Greatclub", "Handaxe", "Javelin", "Light Ha
                   "Spear", "Crossbow, Light", "Dart", "Shortbow", "Sling"]
 MARTIAL_WEAPONS = ['Battleaxe', 'Blowgun', 'Flail', 'Glaive', 'Greataxe', 'Greatsword', 'Halberd', 'Crossbow, Hand',
                    'Crossbow, Heavy', 'Lance', 'Longbow', 'Longsword', 'Maul', 'Morningstar', 'Net', 'Pike', 'Rapier',
-                   'Scimitar', 'Shortsword', 'Trident', 'War Pick', 'Warhammer', 'Whip', 'Pistol', 'Musket',
-                   'Automatic Pistol', 'Revolver', 'Hunting Rifle', 'Automatic Rifle', 'Shotgun', 'Laser Pistol',
-                   'Antimatter Rifle', 'Laser Rifle']
+                   'Scimitar', 'Shortsword', 'Trident', 'War Pick', 'Warhammer', 'Whip']
+
+SIMPLE_FIREARMS = ["Pistol", "Musket", "Revolver","Hunting Rifle", "Shotgun", "Automatic Pistol" ,"Automatic Rifle",]
+
+SCI_FI_FIREARMS = ["Antimatter Rifle", "Laser Pistol", "Laser Rifle"]
+
 HOUSERULE_SKILL_MAP = {
     3: 'acrobatics', 11: 'animalHandling', 6: 'arcana', 2: 'athletics', 16: 'deception', 7: 'history',
     12: 'insight', 17: 'intimidation', 8: 'investigation', 13: 'medicine', 9: 'nature', 14: 'perception',
@@ -618,6 +621,8 @@ class BeyondSheetParser:
                             p.extend(SIMPLE_WEAPONS)
                         elif mod['subType'] == 'martial-weapons':
                             p.extend(MARTIAL_WEAPONS)
+                        elif mod['subType'] == 'firearms':
+                            p.extend(SIMPLE_FIREARMS)
                         p.append(mod['friendlySubtypeName'])
             self.prof = p
         return proftype in self.prof
