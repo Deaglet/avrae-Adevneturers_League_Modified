@@ -40,9 +40,12 @@ SIMPLE_WEAPONS = ["Club", "Dagger", "Greatclub", "Handaxe", "Javelin", "Light Ha
                   "Spear", "Crossbow, Light", "Dart", "Shortbow", "Sling"]
 MARTIAL_WEAPONS = ['Battleaxe', 'Blowgun', 'Flail', 'Glaive', 'Greataxe', 'Greatsword', 'Halberd', 'Crossbow, Hand',
                    'Crossbow, Heavy', 'Lance', 'Longbow', 'Longsword', 'Maul', 'Morningstar', 'Net', 'Pike', 'Rapier',
-                   'Scimitar', 'Shortsword', 'Trident', 'War Pick', 'Warhammer', 'Whip', 'Pistol', 'Musket',
-                   'Automatic Pistol', 'Revolver', 'Hunting Rifle', 'Automatic Rifle', 'Shotgun', 'Laser Pistol',
-                   'Antimatter Rifle', 'Laser Rifle']
+                   'Scimitar', 'Shortsword', 'Trident', 'War Pick', 'Warhammer', 'Whip']
+
+SIMPLE_FIREARMS = ["Pistol", "Musket", "Revolver","Hunting Rifle", "Shotgun", "Automatic Pistol" ,"Automatic Rifle",]
+
+SCI_FI_FIREARMS = ["Antimatter Rifle", "Laser Pistol", "Laser Rifle"]
+
 HOUSERULE_SKILL_MAP = {
     3: 'acrobatics', 11: 'animalHandling', 6: 'arcana', 2: 'athletics', 16: 'deception', 7: 'history',
     12: 'insight', 17: 'intimidation', 8: 'investigation', 13: 'medicine', 9: 'nature', 14: 'perception',
@@ -288,12 +291,18 @@ class BeyondSheetParser:
                 'details': atkIn['snippet']
             }
         elif atkType == 'item':
+            print("Iaction")
             itemdef = atkIn['definition']
             weirdBonuses = self.get_specific_item_bonuses(atkIn['id'])
             isProf = self.get_prof(itemdef['type']) or weirdBonuses['isPact']
             magicBonus = sum(
                 m['value'] for m in itemdef['grantedModifiers'] if m['type'] == 'bonus' and m['subType'] == 'magic')
+            print("item definition")
+            print(itemdef)
             modBonus = self.get_relevant_atkmod(itemdef) if not weirdBonuses['isHex'] else self.stat_from_id(6)
+            print("Mod Bonus: ")
+            print(modBonus)
+
 
             dmgBonus = modBonus + magicBonus + weirdBonuses['damage']
             toHitBonus = (prof if isProf else 0) + magicBonus + weirdBonuses['attackBonus']
@@ -314,7 +323,8 @@ class BeyondSheetParser:
                          f"{'^' if itemdef['magic'] or weirdBonuses['isPact'] else ''}]"
 
             attack = {
-                'attackBonus': str(weirdBonuses['attackBonusOverride'] or modBonus + toHitBonus),
+                # 'attackBonus': str(weirdBonuses['attackBonusOverride'] or modBonus + toHitBonus),
+                'attackBonus': str(modBonus + toHitBonus),
                 'damage': damage,
                 'name': itemdef['name'],
                 'details': html2text.html2text(itemdef['description'], bodywidth=0).strip()
@@ -611,6 +621,8 @@ class BeyondSheetParser:
                             p.extend(SIMPLE_WEAPONS)
                         elif mod['subType'] == 'martial-weapons':
                             p.extend(MARTIAL_WEAPONS)
+                        elif mod['subType'] == 'firearms':
+                            p.extend(SIMPLE_FIREARMS)
                         p.append(mod['friendlySubtypeName'])
             self.prof = p
         return proftype in self.prof
