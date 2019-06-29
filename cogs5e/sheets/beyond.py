@@ -162,7 +162,6 @@ class BeyondSheetParser:
         """Calculates the final value of a stat, based on modifiers and feats."""
         if stat in self.set_calculated_stats:
             return self.calculated_stats[stat]
-        print(self.calculated_stats)
         bonus = self.calculated_stats[stat]
         return base + bonus
 
@@ -292,6 +291,7 @@ class BeyondSheetParser:
             print("Iaction")
             itemdef = atkIn['definition']
             weirdBonuses = self.get_specific_item_bonuses(atkIn['id'])
+            print(weirdBonuses)
             isProf = self.get_prof(itemdef['type']) or weirdBonuses['isPact']
             magicBonus = sum(
                 m['value'] for m in itemdef['grantedModifiers'] if m['type'] == 'bonus' and m['subType'] == 'magic')
@@ -307,7 +307,6 @@ class BeyondSheetParser:
             if is_melee and is_one_handed:
                 dmgBonus += self.get_stat('one-handed-melee-attacks-damage')
             if not is_melee and is_weapon:
-                print(self.get_stat("ranged-weapon-attacks"))
                 toHitBonus += self.get_stat('ranged-weapon-attacks')
 
             damage = None
