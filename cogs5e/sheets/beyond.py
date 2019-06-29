@@ -299,8 +299,10 @@ class BeyondSheetParser:
             print("item definition")
             print(itemdef)
             modBonus = self.get_relevant_atkmod(itemdef) if not weirdBonuses['isHex'] else self.stat_from_id(6)
-            print("Mod Bonus: " + modBonus)
+            print("Mod Bonus: ")
+            print(modBonus)
 
+            
             dmgBonus = modBonus + magicBonus + weirdBonuses['damage']
             toHitBonus = (prof if isProf else 0) + magicBonus + weirdBonuses['attackBonus']
 
