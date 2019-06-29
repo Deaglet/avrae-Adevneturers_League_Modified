@@ -253,6 +253,7 @@ class BeyondSheetParser:
             'details': None
         }
         if atkType == 'action':
+            print("action")
             if atkIn['dice'] is None:
                 return []  # thanks DDB
             isProf = atkIn['isProficient']
@@ -268,6 +269,7 @@ class BeyondSheetParser:
                 'details': atkIn['snippet']
             }
         elif atkType == 'customAction':
+            print("Caction")
             isProf = atkIn['isProficient']
             dmgBonus = (atkIn['fixedValue'] or 0) + (atkIn['damageBonus'] or 0)
             atkBonus = None
@@ -288,6 +290,7 @@ class BeyondSheetParser:
                 'details': atkIn['snippet']
             }
         elif atkType == 'item':
+            print("Iaction")
             itemdef = atkIn['definition']
             weirdBonuses = self.get_specific_item_bonuses(atkIn['id'])
             isProf = self.get_prof(itemdef['type']) or weirdBonuses['isPact']
