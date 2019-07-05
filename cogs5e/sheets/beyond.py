@@ -62,6 +62,7 @@ class BeyondSheetParser:
         self.stats = None
         self.levels = None
         self.prof = None
+        self.bonuses = None
         self.calculated_stats = collections.defaultdict(lambda: 0)
         self.set_calculated_stats = set()
 
@@ -94,8 +95,8 @@ class BeyondSheetParser:
              (character['baseHitPoints'] +
               ((self.get_stat('hit-points-per-level', base=stats['constitutionMod'])) * levels['level']))
         armor = self.get_ac()
-        attacks = self.get_attacks()
         skills = self.get_skills()
+        attacks = self.get_attacks()
         temp_resist = self.get_resistances()
         resistances = temp_resist['resist']
         immunities = temp_resist['immune']
@@ -297,7 +298,10 @@ class BeyondSheetParser:
             magicBonus = sum(
                 m['value'] for m in itemdef['grantedModifiers'] if m['type'] == 'bonus' and m['subType'] == 'magic')
             modBonus = self.get_relevant_atkmod(itemdef) if not weirdBonuses['isHex'] else self.stat_from_id(6)
-
+            if 'magic-item-attack-with-intelligence' in self.bonuses and itemdef["magic"]:
+                intBonus = self.stat_from_id(4)
+                if modBonus < intBonus:
+                    modBonus = intBonus
 
             dmgBonus = modBonus + magicBonus + weirdBonuses['damage']
             toHitBonus = (prof if isProf else 0) + magicBonus + weirdBonuses['attackBonus']
@@ -430,7 +434,7 @@ class BeyondSheetParser:
                 elif mod['type'] == 'bonus':
                     if not mod['isGranted']:
                         continue
-                    if mod['statId'] is not None:
+                    if mod['statId'] is not None and mod["statId"] != "None":
                         bonuses[mod['subType']] = bonuses.get(mod['subType'], 0) + self.stat_from_id(mod['statId'])
                     else:
                         bonuses[mod['subType']] = bonuses.get(mod['subType'], 0) + (mod['value'] or 0)
@@ -479,6 +483,7 @@ class BeyondSheetParser:
 
         for stat in ('strength', 'dexterity', 'constitution', 'wisdom', 'intelligence', 'charisma'):
             skills[stat] = stats.get(stat + 'Mod')
+        self.bonuses = bonuses
 
         return skills
 
