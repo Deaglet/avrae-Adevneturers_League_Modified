@@ -2,6 +2,10 @@ import asyncio
 import logging
 import random
 
+#for rekaj_name_gen
+#import re 
+import rstr
+
 from discord.ext import commands
 
 from cogs5e.funcs.dice import roll
@@ -69,6 +73,11 @@ class CharGenerator(commands.Cog):
         embed.title = f"{table['name']} {race_names['race']} Name"
         embed.description = random.choice(table['choices'])
         await ctx.send(embed=embed)
+        
+    @commands.command(aliases=['rekaj_name'])
+    async def randname(self, ctx):
+        """Generates a random name, optionally from a given race."""
+        await ctx.send(f"Your random name: {self.rekaj_name_gen()}")
 
     @commands.command(name='charref', aliases=['makechar'])
     async def char(self, ctx, level):
@@ -301,6 +310,9 @@ class CharGenerator(commands.Cog):
                 "in", "or", "us"]
         name += random.choice(beginnings) + random.choice(middles) + random.choice(ends)
         name = name.capitalize()
+        return name
+    def rekaj_name_gen():
+        name = rstr.xeger([aeiouy][bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]([aeiouy][bcdfghjklmnpqrstvwxz]?)?|[aeiouy]([bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]|[aeiouy])?)?)|[bcdfghjklmnpqrstvwxz][aeiouy][bcdfghjklmnpqrstvwxz]([aeiouy]([bcdfghjklmnpqrstvwxz])?|[bcdfghjklmnpqrstvwxz]([aeiouy])?)?))
         return name
 
     @staticmethod
