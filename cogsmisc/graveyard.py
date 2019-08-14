@@ -17,7 +17,7 @@ class Graveyard(commands.Cog):
     @commands.command(name='graveyard', aliases=['death'])
     @commands.cooldown(1, 5, BucketType.user)
     async def graveyard(self,ctx):
-        await ctx.send( "Graveyard. Test String")
+        await ctx.send( "Graveyard. Test String. Coming soon.")
 
 
 
