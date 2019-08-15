@@ -76,7 +76,7 @@ class CharGenerator(commands.Cog):
         await ctx.send(embed=embed)
         
     @commands.command(aliases=['rekaj_name'])
-    async def randname(self, ctx):
+    async def rekajname(self, ctx):
         """Generates a random name, optionally from a given race."""
         return await ctx.send(f"Your random 3-5 char rekaj name: {self.rekaj_name_gen()}")
 
@@ -313,6 +313,7 @@ class CharGenerator(commands.Cog):
         name = name.capitalize()
         return name
     def rekaj_name_gen():
+        name = ""
         #name = rstr.xeger("[aeiouy][bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]([aeiouy][bcdfghjklmnpqrstvwxz]?)?|[aeiouy]([bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]|[aeiouy])?)?)|[bcdfghjklmnpqrstvwxz][aeiouy][bcdfghjklmnpqrstvwxz]([aeiouy]([bcdfghjklmnpqrstvwxz])?|[bcdfghjklmnpqrstvwxz]([aeiouy])?)?)")
         return name
 
