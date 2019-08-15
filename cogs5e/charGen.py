@@ -4,7 +4,7 @@ import random
 
 #for rekaj_name_gen
 #import re 
-import rstr
+import xeger
 
 from discord.ext import commands
 
@@ -312,7 +312,7 @@ class CharGenerator(commands.Cog):
         name = name.capitalize()
         return name
     def rekaj_name_gen():
-        name = rstr.xeger("[aeiouy][bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]([aeiouy][bcdfghjklmnpqrstvwxz]?)?|[aeiouy]([bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]|[aeiouy])?)?)|[bcdfghjklmnpqrstvwxz][aeiouy][bcdfghjklmnpqrstvwxz]([aeiouy]([bcdfghjklmnpqrstvwxz])?|[bcdfghjklmnpqrstvwxz]([aeiouy])?)?)")
+        name = xeger.xeger("[aeiouy][bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]([aeiouy][bcdfghjklmnpqrstvwxz]?)?|[aeiouy]([bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]|[aeiouy])?)?)|[bcdfghjklmnpqrstvwxz][aeiouy][bcdfghjklmnpqrstvwxz]([aeiouy]([bcdfghjklmnpqrstvwxz])?|[bcdfghjklmnpqrstvwxz]([aeiouy])?)?)")
         return name
 
     @staticmethod
