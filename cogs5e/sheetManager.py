@@ -321,13 +321,12 @@ class SheetManager(commands.Cog):
             skill = next(a for a in skills.keys() if check.lower() == a.lower())#this checks for the skill exactly
         except StopIteration:
             try:
-                for alias in SKILL_ALIASES.keys():
-                    print("debug: ",alias)
-                    if check.lower() == alias.lower():
-                        skill = SKILL_ALIASES[alias]
-                skill = next(a for a in skills.keys() if check.lower() in a.lower())#this checks for the partial name of the skill
+                skill = next(alias for alias in SKILL_ALIASES.keys() if check.lower() == alias.lower())#go through our alias names
             except StopIteration:
-                return await ctx.send('That\'s not a valid check.')
+                try:
+                    skill = next(a for a in skills.keys() if check.lower() in a.lower())#this checks for the partial name of the skill
+                except StopIteration:
+                    return await ctx.send('That\'s not a valid check.')
 
         embed = EmbedWithCharacter(char, False)
 
