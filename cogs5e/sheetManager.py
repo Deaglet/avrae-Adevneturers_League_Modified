@@ -322,6 +322,7 @@ class SheetManager(commands.Cog):
         except StopIteration:
             try:
                 for alias in SKILL_ALIASES.keys():
+                    print("debug: ",alias)
                     if check.lower() == alias.lower():
                         skill = SKILL_ALIASES[alias]
                 skill = next(a for a in skills.keys() if check.lower() in a.lower())#this checks for the partial name of the skill
