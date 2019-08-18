@@ -45,6 +45,9 @@ SKILL_MAP = {'acrobatics': 'dexterity', 'animalHandling': 'wisdom', 'arcana': 'i
              'intelligence': 'intelligence', 'wisdom': 'wisdom', 'charisma': 'charisma'}
 CLASS_RESOURCES = ("expertiseDice", "ki", "rages", "sorceryPoints", "superiorityDice")
 
+#rekaj generated skill aliases
+SKILL_ALIASES = {'investigate':'investigation'}
+
 
 class Character(Spellcaster):
     def __init__(self, _dict, _id):
