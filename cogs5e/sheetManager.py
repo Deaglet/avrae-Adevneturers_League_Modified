@@ -318,10 +318,13 @@ class SheetManager(commands.Cog):
         if not skills:
             return await ctx.send('You must update your character sheet first.')
         try:
-            skill = next(a for a in skills.keys() if check.lower() == a.lower())
+            skill = next(a for a in skills.keys() if check.lower() == a.lower())#this checks for the skill exactly
         except StopIteration:
             try:
-                skill = next(a for a in skills.keys() if check.lower() in a.lower())
+                if check.lower() == "investigate":
+                        skill = "investigation"
+                else:
+                    skill = next(a for a in skills.keys() if check.lower() in a.lower())#this checks for the partial name of the skill
             except StopIteration:
                 return await ctx.send('That\'s not a valid check.')
 
