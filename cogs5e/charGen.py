@@ -19,7 +19,7 @@ log = logging.getLogger(__name__)
 
 SKILL_MAP = {'acrobatics': 'acrobatics', 'animal handling': 'animalHandling', 'arcana': 'arcana',
              'athletics': 'athletics', 'deception': 'deception', 'history': 'history', 'initiative': 'initiative',
-             'insight': 'insight', 'intimidation': 'intimidation', 'investigation': 'investigation',
+             'insight': 'insight', 'intimidation': 'intimidation', 'investigation': 'investigation','investigate':'investigation',
              'medicine': 'medicine', 'nature': 'nature', 'perception': 'perception', 'performance': 'performance',
              'persuasion': 'persuasion', 'religion': 'religion', 'sleight of hand': 'sleightOfHand',
              'stealth': 'stealth', 'survival': 'survival'}
