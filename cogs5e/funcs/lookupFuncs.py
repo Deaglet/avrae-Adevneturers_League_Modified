@@ -47,7 +47,8 @@ class Compendium:
         with open('./res/bestiary.json', 'r') as f:
             self.monsters = json.load(f)
             self.monster_mash = [Monster.from_data(m) for m in self.monsters]
-        with open('./res/spells.json', 'r') as f:
+        #with open('./res/spells.json', 'r') as f:
+        with open('/res/spells.json', 'r') as f:#trying to find it one level up
             self.spells = [Spell.from_data(r) for r in json.load(f)]
         with open('./res/items.json', 'r') as f:
             _items = json.load(f)
