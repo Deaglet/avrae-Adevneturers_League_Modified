@@ -27,6 +27,22 @@ class Dice(commands.Cog):
         rollStr = '1d20+' + mod
         await ctx.invoke(self.bot.get_command("roll"), rollStr=rollStr)
 
+    @commands.command(name='fate', aliases=['f'])
+    async def fateRoll(self, ctx, dice_number):
+        outcome = 0
+        output_str = ""
+        for i in range(dice_number):
+            value = random.randint(0, 2)
+            if value == 2:
+                outcome += 1
+                output_str += " + "
+            elif value == 1:
+                outcome -= 1
+                output_str += " - "
+            else:
+                output_str += " | "
+        await ctx.send(output_str)
+
     @commands.command(name='roll', aliases=['r'])
     async def rollCmd(self, ctx, *, rollStr: str = '1d20'):
         """Rolls dice in xdy format.
