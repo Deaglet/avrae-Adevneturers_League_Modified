@@ -31,6 +31,7 @@ class Dice(commands.Cog):
     async def fateRoll(self, ctx, dice_number):
         outcome = 0
         output_str = ""
+        dice_number = int(dice_number)
         for i in range(dice_number):
             value = random.randint(0, 2)
             if value == 2:
