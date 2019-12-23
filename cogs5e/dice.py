@@ -42,6 +42,7 @@ class Dice(commands.Cog):
                 output_str += " - "
             else:
                 output_str += " | "
+        output_str += "\n Fate: " + str(outcome)
         await ctx.send(output_str)
 
     @commands.command(name='roll', aliases=['r'])
