@@ -30,7 +30,7 @@ class Dice(commands.Cog):
     @commands.command(name='fate', aliases=['f'])
     async def fateRoll(self, ctx, dice_number):
         outcome = 0
-        output_str = ""
+        output_str = "Fate Dice roll " + dice_number + " dice \n"
         dice_number = int(dice_number)
         for i in range(dice_number):
             value = random.randint(0, 2)
@@ -42,8 +42,8 @@ class Dice(commands.Cog):
                 outcome -= 1
                 output_str += " <:no:529377283245342730> "
             else:
-                output_str += " <:white_large_square:> "
-        output_str += "\n Fate: "
+                output_str += " :white_large_square: "
+        output_str += "\n Fate Result: "
         if outcome > 1:
             output_str += " +"
         output_str += str(outcome)
