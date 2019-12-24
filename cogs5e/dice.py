@@ -37,12 +37,12 @@ class Dice(commands.Cog):
             if value == 2:
                 outcome += 1
                 # I really hope this id doesn't change
-                output_str += " <:yes:658848000684195861>  "
+                output_str += " <:yes:529377283702521856>  "
             elif value == 1:
                 outcome -= 1
-                output_str += " <:no:658848179223265312> "
+                output_str += " <:no:529377283245342730> "
             else:
-                output_str += " <:FaceofKarsus:658848275918749726> "
+                output_str += " <:FaceofKarsus:571123709721706526> "
         output_str += "\n Fate: " + str(outcome)
         await ctx.send(output_str)
 
