@@ -42,8 +42,11 @@ class Dice(commands.Cog):
                 outcome -= 1
                 output_str += " <:no:529377283245342730> "
             else:
-                output_str += " <:FaceofKarsus:571123709721706526> "
-        output_str += "\n Fate: " + str(outcome)
+                output_str += " <:white_large_square:> "
+        output_str += "\n Fate: "
+        if outcome > 1:
+            output_str += " +"
+        output_str += str(outcome)
         await ctx.send(output_str)
 
     @commands.command(name='roll', aliases=['r'])
