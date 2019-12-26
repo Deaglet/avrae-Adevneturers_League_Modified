@@ -1,8 +1,10 @@
 #!/bin/bash
 #Scripts to start services if not running
 
-ps -ef | grep rekaj_dbot |grep -v grep > /dev/null
+ps -ef | grep dbot |grep -v grep > /dev/null  #run with rekaj_dbot.py instead of dbot.py to test
 if [ $? != 0 ]
 then
-       sudo python3 rekaj_dbot.py test start > /dev/null 
+	   #what does start do?  Do we need ...test start > /dev/null ?
+	   sudo python3 dbot.py test > /dev/null &  #run with rekaj_dbot.py instead of dbot.py to test
+	   disown
 fi
