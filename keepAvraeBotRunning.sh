@@ -4,5 +4,5 @@
 ps -ef | grep dbot |grep -v grep > /dev/null
 if [ $? != 0 ]
 then
-       <locationOfdbot.py> start > /dev/null
+       /repos/avrae-Travelers_League_Modified/dbot.py  start > /dev/null
 fi
