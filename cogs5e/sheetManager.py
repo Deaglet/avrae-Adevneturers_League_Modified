@@ -325,8 +325,7 @@ class SheetManager(commands.Cog):
             except StopIteration:
                 try:
                     # Probably will be fairly slow, but whatever
-                    # skill = next(SKILL_ALIASES[alias] for alias in SKILL_ALIASES.keys() if check.lower() == SKILL_ALIASES[alias].lower())#go through our alias names
-                    skill = next(SKILL_ALIASES[alias] for alias in SKILL_ALIASES.keys() if check.lower() == 'investigate')#go through our alias names
+                    skill = next(SKILL_ALIASES[alias] for alias in SKILL_ALIASES.keys() if check.lower() == alias.lower())#go through our alias names
                 except StopIteration:
                     return await ctx.send('That\'s not a valid check.')
 
