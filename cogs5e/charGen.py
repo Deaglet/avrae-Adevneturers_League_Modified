@@ -314,7 +314,7 @@ class CharGenerator(commands.Cog):
         return name
     def rekaj_name_gen(self):
         #name = ""
-        name = rstr.xeger("[aeiouy][bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]([aeiouy][bcdfghjklmnpqrstvwxz]?)?|[aeiouy]([bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]|[aeiouy])?)?)|[bcdfghjklmnpqrstvwxz][aeiouy][bcdfghjklmnpqrstvwxz]([aeiouy]([bcdfghjklmnpqrstvwxz])?|[bcdfghjklmnpqrstvwxz]([aeiouy])?)?)")
+        name = rstr.xeger(r'[aeiouy][bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]([aeiouy][bcdfghjklmnpqrstvwxz]?)?|[aeiouy]([bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]|[aeiouy])?)?)|[bcdfghjklmnpqrstvwxz][aeiouy][bcdfghjklmnpqrstvwxz]([aeiouy]([bcdfghjklmnpqrstvwxz])?|[bcdfghjklmnpqrstvwxz]([aeiouy])?)?)')
         return name
 
     @staticmethod
