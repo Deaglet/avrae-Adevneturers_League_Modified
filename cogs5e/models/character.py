@@ -47,7 +47,8 @@ CLASS_RESOURCES = ("expertiseDice", "ki", "rages", "sorceryPoints", "superiority
 
 #rekaj generated skill aliases
 SKILL_ALIASES = {'investigate':'investigation', 'persuade':'persuasion', 'intimidate':'intimidation',
-                 'deceive':"deception","lie":"deception", "survive":"survival",}
+                 'deceive':"deception","lie":"deception", "survive":"survival",
+                 "swim":"athletics", "grapple":"athletics", "clime": "athletics"}
 
 
 class Character(Spellcaster):
