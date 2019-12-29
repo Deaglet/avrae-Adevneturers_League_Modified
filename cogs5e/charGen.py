@@ -312,7 +312,7 @@ class CharGenerator(commands.Cog):
         name += random.choice(beginnings) + random.choice(middles) + random.choice(ends)
         name = name.capitalize()
         return name
-    def rekaj_name_gen():
+    def rekaj_name_gen(self):
         name = ""
         #name = rstr.xeger("[aeiouy][bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]([aeiouy][bcdfghjklmnpqrstvwxz]?)?|[aeiouy]([bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]|[aeiouy])?)?)|[bcdfghjklmnpqrstvwxz][aeiouy][bcdfghjklmnpqrstvwxz]([aeiouy]([bcdfghjklmnpqrstvwxz])?|[bcdfghjklmnpqrstvwxz]([aeiouy])?)?)")
         return name
