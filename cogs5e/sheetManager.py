@@ -24,7 +24,7 @@ from cogs5e.funcs import scripting
 from cogs5e.funcs.dice import roll
 from cogs5e.funcs.sheetFuncs import sheet_attack
 from cogs5e.models import embeds
-from cogs5e.models.character import Character, SKILL_MAP
+from cogs5e.models.character import Character, SKILL_MAP, SKILL_ALIASES
 from cogs5e.models.embeds import EmbedWithCharacter
 from cogs5e.models.errors import AvraeException, InvalidArgument
 from cogs5e.sheets.beyond import BeyondSheetParser
@@ -318,12 +318,15 @@ class SheetManager(commands.Cog):
         if not skills:
             return await ctx.send('You must update your character sheet first.')
         try:
-            skill = next(a for a in skills.keys() if check.lower() == a.lower())
+            skill = next(a for a in skills.keys() if check.lower() == a.lower())#this checks for the skill exactly
         except StopIteration:
             try:
-                skill = next(a for a in skills.keys() if check.lower() in a.lower())
+                skill = next(a for a in skills.keys() if check.lower() in a.lower())#this checks for the partial name of the skill
             except StopIteration:
-                return await ctx.send('That\'s not a valid check.')
+                try:
+                    skill = next(SKILL_ALIASES[alias] for alias in skills.keys() if check.lower() == alias.lower())#go through our alias names
+                except StopIteration:
+                    return await ctx.send('That\'s not a valid check.')
 
         embed = EmbedWithCharacter(char, False)
 
