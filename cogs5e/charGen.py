@@ -4,7 +4,7 @@ import random
 
 #for rekaj_name_gen
 #import re 
-#import rstr
+import rstr
 #import xeger
 
 from discord.ext import commands
@@ -77,7 +77,6 @@ class CharGenerator(commands.Cog):
         
     @commands.command(aliases=['rekaj_name'])
     async def rekajname(self, ctx):
-        """Generates a random name, optionally from a given race."""
         return await ctx.send(f"Your random 3-5 char rekaj name: {self.rekaj_name_gen()}")
 
     @commands.command(name='charref', aliases=['makechar'])
@@ -312,9 +311,9 @@ class CharGenerator(commands.Cog):
         name += random.choice(beginnings) + random.choice(middles) + random.choice(ends)
         name = name.capitalize()
         return name
-    def rekaj_name_gen():
-        name = ""
-        #name = rstr.xeger("[aeiouy][bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]([aeiouy][bcdfghjklmnpqrstvwxz]?)?|[aeiouy]([bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]|[aeiouy])?)?)|[bcdfghjklmnpqrstvwxz][aeiouy][bcdfghjklmnpqrstvwxz]([aeiouy]([bcdfghjklmnpqrstvwxz])?|[bcdfghjklmnpqrstvwxz]([aeiouy])?)?)")
+    def rekaj_name_gen(self):
+        #name = ""
+        name = rstr.xeger(r'([aeiouy][bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]([aeiouy][bcdfghjklmnpqrstvwxz]?)?|[aeiouy]([bcdfghjklmnpqrstvwxz]([bcdfghjklmnpqrstvwxz]|[aeiouy])?)?)|[bcdfghjklmnpqrstvwxz][aeiouy][bcdfghjklmnpqrstvwxz]([aeiouy]([bcdfghjklmnpqrstvwxz])?|[bcdfghjklmnpqrstvwxz]([aeiouy])?)?)')
         return name
 
     @staticmethod
