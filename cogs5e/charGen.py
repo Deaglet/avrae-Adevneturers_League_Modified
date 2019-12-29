@@ -77,7 +77,6 @@ class CharGenerator(commands.Cog):
         
     @commands.command(aliases=['rekaj_name'])
     async def rekajname(self, ctx):
-        """Generates a random name, optionally from a given race."""
         return await ctx.send(f"Your random 3-5 char rekaj name: {self.rekaj_name_gen()}")
 
     @commands.command(name='charref', aliases=['makechar'])
