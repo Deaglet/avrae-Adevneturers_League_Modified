@@ -46,7 +46,8 @@ SKILL_MAP = {'acrobatics': 'dexterity', 'animalHandling': 'wisdom', 'arcana': 'i
 CLASS_RESOURCES = ("expertiseDice", "ki", "rages", "sorceryPoints", "superiorityDice")
 
 #rekaj generated skill aliases
-SKILL_ALIASES = {'investigate':'investigation'}
+SKILL_ALIASES = {'investigate':'investigation', 'persuade':'persuasion', 'intimidate':'intimidation',
+                 'deceive':"deception","lie":"deception", "survive":"survival",}
 
 
 class Character(Spellcaster):
