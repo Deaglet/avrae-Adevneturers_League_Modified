@@ -52,7 +52,7 @@ class Avrae(commands.AutoShardedBot):
             self.mclient = motor.motor_asyncio.AsyncIOMotorClient(self.credentials.test_mongo_url)
         else:
             self.rdb = RedisIO()
-            self.mclient = motor.motor_asyncio.AsyncIOMotorClient("mongodb://localhost:27017")
+            self.mclient = motor.motor_asyncio.AsyncIOMotorClient("mongodb://127.0.0.1:27017")
 
         self.mdb = self.mclient.avrae  # let's just use the avrae db
         self.dynamic_cog_list = DYNAMIC_COGS
