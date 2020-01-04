@@ -528,7 +528,7 @@ class SheetManager(commands.Cog):
     async def character(self, ctx, *, name: str = None):
         """Switches the active character.
         Breaks for characters created before Jan. 20, 2017."""
-        user_characters = await self.bot.mdb.characters.find({"owner": str(ctx.author.id)}).to_list(None)
+        user_characters = await self.bot.mdb.characters.find({"owner": str(ctx.author.id)}).to_dict(None)
         active_character = next((c for c in user_characters if c['active']), None)
         if not user_characters:
             return await ctx.send('You have no characters.')
