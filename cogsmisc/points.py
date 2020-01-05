@@ -57,11 +57,6 @@ class Points(commands.Cog):
                 new_point_total = original_point_total + int_points
                 await self.savePointsByKeyValue("role", role, new_point_total, original_point_total)
 
-    @commands.command(name='seth')
-    @commands.cooldown(1, 5, BucketType.user)
-    async def seth(self, ctx):
-        await ctx.send("Shut up Mattee")
-
     @commands.command(name='subtractpointsbyrole')
     @commands.cooldown(1, 5, BucketType.user)
     async def subtractPointsByRole(self, ctx, role, points):
