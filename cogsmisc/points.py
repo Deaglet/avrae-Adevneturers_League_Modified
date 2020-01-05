@@ -59,7 +59,7 @@ class Points(commands.Cog):
 
     @commands.command(name='seth')
     @commands.cooldown(1, 5, BucketType.user)
-    async def addPointsByRole(self, ctx, role, points):
+    async def seth(self, ctx):
         await ctx.send("Shut up Mattee")
 
     @commands.command(name='subtractpointsbyrole')
