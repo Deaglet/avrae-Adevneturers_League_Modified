@@ -4,6 +4,7 @@ import textwrap
 import traceback
 import uuid
 import re
+import os
 
 import discord
 from discord.ext import commands
@@ -43,6 +44,12 @@ class Points(commands.Cog):
         await self.saveEmojiByKeyValue("role",role,emoji)
         role = await self.getRoleByMention(ctx, role)
         await ctx.send(role.__str__() + "'s emoji has been set to " + emoji + ".")
+
+        @commands.command(name='test')
+        async def test(self, ctx):
+            os.system("sudo systemctl start mongodb")
+            os.system("systemctl start mongodb")
+            await ctx.send("Test has been executed")
 
     # <editor-fold desc="Point Adjusting">
     @commands.command(name='addpointsbyrole')
