@@ -4,7 +4,7 @@ import textwrap
 import traceback
 import uuid
 import re
-import os
+import subprocess
 
 import discord
 from discord.ext import commands
@@ -45,10 +45,10 @@ class Points(commands.Cog):
         role = await self.getRoleByMention(ctx, role)
         await ctx.send(role.__str__() + "'s emoji has been set to " + emoji + ".")
 
-        @commands.command(name='test')
-        async def test(self, ctx):
-            os.system("sudo systemctl start mongodb")
-            os.system("systemctl start mongodb")
+        @commands.command(name='testunique')
+        async def testunique(self, ctx):
+            process = ["sudo","systmectl", "restart", "mongodb"]
+            subprocess.run(process)
             await ctx.send("Test has been executed")
 
     # <editor-fold desc="Point Adjusting">
