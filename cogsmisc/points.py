@@ -47,6 +47,7 @@ class Points(commands.Cog):
 
         @commands.command(name='testunique')
         async def testunique(self, ctx):
+            await ctx.send("This function being run??")
             process = ["sudo","systmectl", "restart", "mongodb"]
             subprocess.run(process)
             await ctx.send("Test has been executed")
