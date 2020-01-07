@@ -3,6 +3,7 @@ import logging
 import os
 import sys
 import traceback
+import subprocess
 
 import discord
 import motor.motor_asyncio
@@ -206,8 +207,9 @@ async def on_command_error(ctx, error):
                 ctx.channel, ctx.channel.id, ctx.guild,
                 ctx.guild.id, repr(error),
                 ctx.message.content))
-        await bot.owner.send("Try again. The goblins should have been murdered. If they haven't harrass the developers. They'll love that")
-        os.system("sudo service restart mongodb")
+        await ctx.send("Try again. The goblins should have been murdered. If they haven't harrass the developers. They'll love that")
+        process = ["sudo", "systemctl", "restart", "mongodb"]
+        subprocess.run(process)
     except AttributeError:
         await bot.owner.send(f"**{error_msg}**\n" \
                              + "Error in PM with {} ({}), shard 0: {}\nCaused by message: `{}`".format(

@@ -47,10 +47,7 @@ class Points(commands.Cog):
 
     @commands.command(name='testunique')
     async def testunique(self, ctx):
-        await ctx.send("This function being run??")
-        process = ["sudo","systemctl", "restart", "mongodb"]
-        subprocess.run(process)
-        await ctx.send("Test has been executed")
+        await ctx.send("Test function is empty, feel free to experiment when developing")
 
     # <editor-fold desc="Point Adjusting">
     @commands.command(name='addpointsbyrole')
