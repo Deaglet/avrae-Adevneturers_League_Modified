@@ -51,7 +51,6 @@ class Dice(commands.Cog):
 
     @commands.command(name='shadowrun', aliases=['sr','shadow','run'])
     async def shadowrun(self, ctx, dice_number):
-        outcome = 0
         hitCount = 0
         critCount = 0
         output_str = "__Shadowrun Dice__ \n"
