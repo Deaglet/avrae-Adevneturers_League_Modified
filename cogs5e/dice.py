@@ -58,7 +58,7 @@ class Dice(commands.Cog):
         dice_number = int(dice_number)
         for i in range(dice_number):
             value = random.randint(0, 5)
-            output_str += " " + str(value) + " "
+            output_str += " " + str(value+1) + " "
             if value >= 4:
                 hitCount += 1
             elif value == 0:
