@@ -67,7 +67,7 @@ class Dice(commands.Cog):
         # if critCount >= dice_number/2:
         output_str += "\n"
             # if hitCount == 0:
-        output_str += "***CRITICAL GLITCH***"
+        output_str += "***CRITICAL GLITCH*** \n"
             # else:
         output_str += "*GLITCH*"
         await ctx.send(output_str)
