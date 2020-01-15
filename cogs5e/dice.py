@@ -64,12 +64,12 @@ class Dice(commands.Cog):
             elif value == 0:
                 critCount += 1
         output_str += "\n Runner Hits: " + str(hitCount)
-        # if critCount >= dice_number/2:
-        output_str += "\n"
-            # if hitCount == 0:
-        output_str += "***CRITICAL GLITCH*** \n"
-            # else:
-        output_str += "*GLITCH*"
+        if critCount >= dice_number/2:
+            output_str += "\n"
+            if hitCount == 0:
+                output_str += "***CRITICAL GLITCH***"
+            else:
+                output_str += "*GLITCH*"
         await ctx.send(output_str)
 
     @commands.command(name='roll', aliases=['r'])
