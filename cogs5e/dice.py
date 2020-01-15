@@ -54,7 +54,7 @@ class Dice(commands.Cog):
         outcome = 0
         hitCount = 0
         critCount = 0
-        output_str = "Shadowrun Dice \n"
+        output_str = "Shadowrun Dice: "
         dice_number = int(dice_number)
         for i in range(dice_number):
             value = random.randint(0, 5)
@@ -67,9 +67,9 @@ class Dice(commands.Cog):
         # if critCount >= dice_number/2:
         output_str += "\n"
             # if hitCount == 0:
-        output_str += "<b>CRITICAL GLITCH</b>"
+        output_str += "***CRITICAL GLITCH***"
             # else:
-        output_str += "GLITCH"
+        output_str += "*GLITCH*"
         await ctx.send(output_str)
 
     @commands.command(name='roll', aliases=['r'])
