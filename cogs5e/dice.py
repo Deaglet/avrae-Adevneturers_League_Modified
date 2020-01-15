@@ -54,7 +54,7 @@ class Dice(commands.Cog):
         outcome = 0
         hitCount = 0
         critCount = 0
-        output_str = "Shadowrun Dice: "
+        output_str = "__Shadowrun Dice__ \n"
         dice_number = int(dice_number)
         for i in range(dice_number):
             value = random.randint(0, 5)
