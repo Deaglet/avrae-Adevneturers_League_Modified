@@ -49,6 +49,29 @@ class Dice(commands.Cog):
         output_str += str(outcome)
         await ctx.send(output_str)
 
+    @commands.command(name='shadowrun', aliases=['sr','shadow','run'])
+    async def shadowrun(self, ctx, dice_number):
+        outcome = 0
+        hitCount = 0
+        critCount = 0
+        output_str = "Shadowrun Dice \n"
+        dice_number = int(dice_number)
+        for i in range(dice_number):
+            value = random.randint(0, 5)
+            output_str += " " + str(value) + " "
+            if value >= 4:
+                hitCount += 1
+            elif value == 0:
+                critCount += 1
+        output_str += "\n Runner Hits: " + str(hitCount)
+        # if critCount >= dice_number/2:
+        output_str += "\n"
+            # if hitCount == 0:
+        output_str += "<b>CRITICAL GLITCH</b>"
+            # else:
+        output_str += "GLITCH"
+        await ctx.send(output_str)
+
     @commands.command(name='roll', aliases=['r'])
     async def rollCmd(self, ctx, *, rollStr: str = '1d20'):
         """Rolls dice in xdy format.
