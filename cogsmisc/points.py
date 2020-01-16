@@ -161,3 +161,22 @@ class Points(commands.Cog):
 
 def setup(bot):
     bot.add_cog(Points(bot))
+
+class Context:
+    """A class to pretend to be ctx."""
+
+    def __init__(self, bot, message):
+        self.bot = bot
+        self.message = message
+
+    @property
+    def author(self):
+        return self.message.author
+
+    @property
+    def guild(self):
+        return self.message.guild
+
+    @property
+    def channel(self):
+        return self.message.channel
