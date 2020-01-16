@@ -5,6 +5,7 @@ import traceback
 import uuid
 import re
 import subprocess
+import random
 
 import discord
 from discord.ext import commands
