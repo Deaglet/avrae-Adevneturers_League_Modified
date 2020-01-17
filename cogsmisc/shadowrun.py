@@ -77,10 +77,10 @@ class Shadowrun(commands.Cog):
     async def setEdge(self, ctx, runner_name, edge):
         if self.doesRunnerExist(runner_name):
             self.bot.mdb.character.update_one({"runner_name":runner_name}, {"$set":{"edge":edge}}, upsert=True)
+            await ctx.send("Runner edge has been set")
         else:
             self.addRunner(runner_name, edge)
 
-        await ctx.send("Runner edge has been set")
 
     @commands.command(name='addEdge', aliases=['ae','aEdge','aedge'])
     async def addEdge(self, ctx, runner_name, edge):
