@@ -84,14 +84,14 @@ class Shadowrun(commands.Cog):
 
     @commands.command(name='addEdge', aliases=['ae','aEdge','aedge'])
     async def addEdge(self, ctx, runner_name, edge):
-        self.changeEdge(ctx, runner_name, edge, True)
+        await self.changeEdge(ctx, runner_name, edge, True)
 
     @commands.command(name='subtractEdge', aliases=['se','sEdge','sedge'])
     async def addEdge(self, ctx, runner_name, edge):
-        self.changeEdge(ctx, runner_name, edge, True)
+        await self.changeEdge(ctx, runner_name, edge, True)
 
     # Todo: this method probably does too much
-    def changeEdge(self, ctx, runner_name, edge, positive):
+    async def changeEdge(self, ctx, runner_name, edge, positive):
         str = ""
         if self.doesRunnerExist(runner_name):
             oldEdge = self.bot.mdb.character.find({"runner_name":runner_name}).limit(1)[0]["edge"]
@@ -106,6 +106,7 @@ class Shadowrun(commands.Cog):
                 newEdge = 0
             self.bot.mdb.character.update_one({"runner_name":runner_name}, {"$set":{"edge":newEdge}}, upsert=True)
         else:
+            await ctx.send("Runner does not exist, adding runner")
             self.addRunner(runner_name, edge)
 
         if positive:
