@@ -106,7 +106,6 @@ class Shadowrun(commands.Cog):
                 newEdge = 0
             self.bot.mdb.character.update_one({"runner_name":runner_name}, {"$set":{"edge":newEdge}}, upsert=True)
         else:
-            await ctx.send("Runner does not exist, adding runner")
             self.addRunner(runner_name, edge)
 
         if positive:
