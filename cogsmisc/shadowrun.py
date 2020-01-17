@@ -62,7 +62,7 @@ class Shadowrun(commands.Cog):
 
     @commands.command(name='edge', aliases=['e'])
     async def edge(self, ctx, runner_name):
-        characterDocuments = self.bot.mdb.character.find({"runner_name":runner_name}).limit(1)
+        characterDocuments = self.bot.mdb.shadowrunners.find({"runner_name":runner_name}).limit(1)
         await ctx.send(characterDocuments.next_object()["edge"])
 
     @commands.command(name='addRunner', aliases=['ar','add_runner'])
@@ -70,13 +70,13 @@ class Shadowrun(commands.Cog):
         if self.doesRunnerExist(runner_name):
             await ctx.send("Runner " + runner_name + " already exists")
         else:
-            await self.bot.mdb.character.insert_one({"runner_name":runner_name, "edge_stat":edgeCount, "edge": edgeCount})
+            await self.bot.mdb.shadowrunners.insert_one({"runner_name":runner_name, "edge_stat":edgeCount, "edge": edgeCount})
             await ctx.send("Runner Added")
 
     @commands.command(name='setEdge', aliases=['sete','setedge'])
     async def setEdge(self, ctx, runner_name, edge):
         if self.doesRunnerExist(runner_name):
-            self.bot.mdb.character.update_one({"runner_name":runner_name}, {"$set":{"edge":edge}}, upsert=True)
+            self.bot.mdb.shadowrunners.update_one({"runner_name":runner_name}, {"$set":{"edge":edge}}, upsert=True)
             await ctx.send("Runner edge has been set")
         else:
             self.addRunner(runner_name, edge)
@@ -94,7 +94,7 @@ class Shadowrun(commands.Cog):
     async def changeEdge(self, ctx, runner_name, edge, positive):
         str = ""
         if self.doesRunnerExist(runner_name):
-            oldEdge = self.bot.mdb.character.find({"runner_name":runner_name}).limit(1)[0]["edge"]
+            oldEdge = self.bot.mdb.shadowrunners.find({"runner_name":runner_name}).limit(1)[0]["edge"]
             if positive:
                 newEdge = oldEdge + edge
             else:
@@ -104,7 +104,7 @@ class Shadowrun(commands.Cog):
                 str += "Max edge of 7 reached, setting to 7. \n"
             elif newEdge <= 0:
                 newEdge = 0
-            self.bot.mdb.character.update_one({"runner_name":runner_name}, {"$set":{"edge":newEdge}}, upsert=True)
+            self.bot.mdb.shadowrunners.update_one({"runner_name":runner_name}, {"$set":{"edge":newEdge}}, upsert=True)
         else:
             await ctx.send("Runner does not exist, adding runner")
             self.addRunner(runner_name, edge)
