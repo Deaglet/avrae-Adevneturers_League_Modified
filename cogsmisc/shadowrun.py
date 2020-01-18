@@ -63,8 +63,8 @@ class Shadowrun(commands.Cog):
     @commands.command(name='edge', aliases=['e'])
     async def edge(self, ctx, runner_name):
         characterDocuments = self.bot.mdb.shadowrunners.find({"runner_name":runner_name}).limit(1)
-        charList = characterDocuments.to_list(1)
-        edge = await charList[0]["edge"]
+        charList = await characterDocuments.to_list(1)
+        edge = charList[0]["edge"]
         await ctx.send("Am I crazy"+ str(edge))
 
     @commands.command(name='addRunner', aliases=['ar','add_runner'])
