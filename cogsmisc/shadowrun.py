@@ -67,8 +67,8 @@ class Shadowrun(commands.Cog):
         if len(charList) == 0:
             await ctx.send("Character doesn't exist")
         else:
-            # edge = charList[0]["edge"]
-            edge = charList["edge"]
+            await ctx.send(str(len(charList)))
+            edge = charList[0]["edge"]
             await ctx.send("Am I crazy" + str(edge))
 
     @commands.command(name='addRunner', aliases=['ar','add_runner'])
