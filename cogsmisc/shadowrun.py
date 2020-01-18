@@ -95,7 +95,7 @@ class Shadowrun(commands.Cog):
     async def changeEdge(self, ctx, runner_name, edge, positive):
         str = ""
         if self.doesRunnerExist(runner_name):
-            charCollection = self.bot.mdb.shadowrunners.find({"runner_name":runner_name}).to_list(1)[0]["edge"]
+            charCollection = self.bot.mdb.shadowrunners.find({"runner_name":runner_name})
             char = charCollection.to_list(1)
             oldEdge = char[0]["edge"]
             if positive:
