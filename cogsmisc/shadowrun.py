@@ -73,7 +73,7 @@ class Shadowrun(commands.Cog):
 
     @commands.command(name='addRunner', aliases=['ar','add_runner'])
     async def addRunner(self, ctx, runner_name, edgeCount=0):
-        if self.doesRunnerExist(runner_name):
+        if await self.doesRunnerExist(runner_name):
             await ctx.send("Runner " + runner_name + " already exists")
         else:
             await self.bot.mdb.shadowrunners.insert_one({"runner_name":runner_name, "edge_stat":edgeCount, "edge": edgeCount})
@@ -81,7 +81,7 @@ class Shadowrun(commands.Cog):
 
     @commands.command(name='setEdge', aliases=['sete','setedge'])
     async def setEdge(self, ctx, runner_name, edge):
-        if self.doesRunnerExist(runner_name):
+        if await self.doesRunnerExist(runner_name):
             self.bot.mdb.shadowrunners.update_one({"runner_name":runner_name}, {"$set":{"edge":edge}}, upsert=True)
             await ctx.send("Runner edge has been set")
         else:
@@ -99,10 +99,10 @@ class Shadowrun(commands.Cog):
     # Todo: this method probably does too much
     async def changeEdge(self, ctx, runner_name, edge, positive):
         str = ""
-        if self.doesRunnerExist(runner_name):
-            charCollection = self.bot.mdb.shadowrunners.find({"runner_name":runner_name})
+        if await self.doesRunnerExist(runner_name):
+            charCollection = await self.bot.mdb.shadowrunners.find({"runner_name":runner_name})
             char = charCollection.to_list(1)
-            oldEdge = await char[0]["edge"]
+            oldEdge = char[0]["edge"]
             if positive:
                 newEdge = oldEdge + edge
             else:
