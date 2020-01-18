@@ -123,7 +123,7 @@ class Shadowrun(commands.Cog):
             str += "Edge has been removed, Total Edge: " + newEdge
         await ctx.send(str)
 
-    def doesRunnerExist(self, runner_name):
+    async def doesRunnerExist(self, runner_name):
         characterDocument = await self.bot.mdb.character.find({"runner_name":runner_name})
         listOfCharacter = characterDocument.to_list(1)
         if len(listOfCharacter) == 0:
