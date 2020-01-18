@@ -125,7 +125,7 @@ class Shadowrun(commands.Cog):
 
     def doesRunnerExist(self, runner_name):
         characterDocument = self.bot.mdb.character.find({"runner_name":runner_name})
-        listOfCharacter = yield characterDocument.to_list(None)
+        listOfCharacter = await characterDocument.to_list(None)
         if len(listOfCharacter) == 0:
             return False
         return True
