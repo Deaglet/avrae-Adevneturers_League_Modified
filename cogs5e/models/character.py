@@ -903,15 +903,15 @@ class Character(Spellcaster):
         embed.title = self.get_name()
         embed.set_thumbnail(url=self.get_image())
 
-        embed.add_field(name="HP/Level", value=f"**HP:** {hp}\nLevel {self.get_level()}{resistStr}")
-        embed.add_field(name="AC", value=str(self.get_ac()))
+        embed.add_field(name="HP/Level", value=f"**HP:** ||{hp}\nLevel {self.get_level()}{resistStr}||")
+        embed.add_field(name="AC", value="||"+str(self.get_ac())+"||")
 
-        embed.add_field(name="Stats", value="**STR:** {strength} ({strengthMod:+})\n" \
+        embed.add_field(name="Stats", value="||**STR:** {strength} ({strengthMod:+})\n" \
                                             "**DEX:** {dexterity} ({dexterityMod:+})\n" \
                                             "**CON:** {constitution} ({constitutionMod:+})\n" \
                                             "**INT:** {intelligence} ({intelligenceMod:+})\n" \
                                             "**WIS:** {wisdom} ({wisdomMod:+})\n" \
-                                            "**CHA:** {charisma} ({charismaMod:+})".format(**stats))
+                                            "**CHA:** {charisma} ({charismaMod:+})||".format(**stats))
 
         savesStr = ''
         for save in ('strengthSave', 'dexteritySave', 'constitutionSave', 'intelligenceSave', 'wisdomSave',
@@ -920,14 +920,14 @@ class Character(Spellcaster):
                 skill_effect = f"({skill_effects.get(save)})"
             else:
                 skill_effect = ''
-            savesStr += '**{}**: {:+} {}\n'.format(save[:3].upper(), saves.get(save), skill_effect)
+            savesStr += '**{}**: ||{:+} {}\n||'.format(save[:3].upper(), saves.get(save), skill_effect)
 
         embed.add_field(name="Saves", value=savesStr)
 
         def cc_to_normal(string):
             return re.sub(r'((?<=[a-z])[A-Z]|(?<!\A)[A-Z](?=[a-z]))', r' \1', string)
 
-        skillsStr = ''
+        skillsStr = '||'
         for skill, mod in sorted(skills.items()):
             if 'Save' not in skill:
                 if skill_effects.get(skill):
@@ -935,6 +935,7 @@ class Character(Spellcaster):
                 else:
                     skill_effect = ''
                 skillsStr += '**{}**: {:+} {}\n'.format(cc_to_normal(skill), mod, skill_effect)
+        skillsStr = skillsStr + "||"
 
         embed.add_field(name="Skills", value=skillsStr.title())
 
@@ -953,6 +954,7 @@ class Character(Spellcaster):
             a = ', '.join(atk['name'] for atk in attacks)
         if len(a) > 1023:
             a = "Too many attacks, values hidden!"
-        embed.add_field(name="Attacks", value=a)
+        hide_a = "||"+a+"||"
+        embed.add_field(name="Attacks", value=hide_a)
 
         return embed
