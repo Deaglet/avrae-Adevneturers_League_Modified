@@ -19,7 +19,7 @@ class ThankYou(commands.Cog):
         embed = discord.Embed()
         embed.colour = colorEmbed
         embed.title = "Homegrown"
-        embed.add_field(name = "\u+1FA93", value=f"`Aw shucks, Hux.  Fighting your axe, sucks!`")
+        embed.add_field(name = "\u0001FA93", value=f"`Aw shucks, Hux.  Fighting your axe, sucks!`")
         #embed.set_footer(*, text="Thank you for being a [Nitro Supporter](https://discordapp.com/nitro)", icon_url="cogsmisc\nitro\nitro_icon.svg")
         embed.set_footer(text="Thank you for being a [Nitro Supporter](https://discordapp.com/nitro)!")
         await ctx.send(embed=embed)
