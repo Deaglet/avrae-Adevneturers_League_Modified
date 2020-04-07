@@ -12,8 +12,7 @@ class ThankYou(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name='Homegrown',aliases=['Homegrown'])
-    
+    @commands.command(name='Homegrown'])
     async def Homegrown(self, ctx, *, name: str):
         
         colorEmbed = random.randint(0,3822)
