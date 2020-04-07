@@ -13,7 +13,7 @@ class ThankYou(commands.Cog):
         self.bot = bot
 
     @commands.command(name='Homegrown')
-    async def Homegrown(self, ctx, *, name: str):
+    async def Homegrown(self, ctx):
         
         colorEmbed = random.randint(0,3822)
         embed = discord.Embed()
