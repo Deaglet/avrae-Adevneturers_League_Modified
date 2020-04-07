@@ -21,7 +21,7 @@ class ThankYou(commands.Cog):
         embed.title = "Homegrown"
         embed.add_field(name = "\U0001FA93", value=f"`Aw shucks, Hux.  Fighting your axe, sucks!`")
         #embed.set_footer(*, text="Thank you for being a [Nitro Supporter](https://discordapp.com/nitro)", icon_url="cogsmisc\nitro\nitro_icon.svg")
-        embed.set_footer(text="Thank you for being a Nitro Supporter!", icon_url=f"https://github.com/DiscordiaWiki/wiki/blob/master/uploads/icons/nitro.png")
+        embed.set_footer(text="Thank you for being a Nitro Supporter!", icon_url="https://github.com/DiscordiaWiki/wiki/blob/master/uploads/icons/nitro.png")
         await ctx.send(embed=embed)
 
 
