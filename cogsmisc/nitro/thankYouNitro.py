@@ -28,4 +28,4 @@ class ThankYou(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(Lookup(bot))
+    bot.add_cog(ThankYou(bot))
