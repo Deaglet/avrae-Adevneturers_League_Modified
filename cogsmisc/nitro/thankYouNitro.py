@@ -41,7 +41,7 @@ class ThankYou(commands.Cog):
         embed = discord.Embed()
         embed.colour = colorEmbed
         embed.title = "The Director"
-        embed.add_field(name = "\U0000262D", value=f"`You people disgust me`")
+        embed.add_field(name = "\U0001F439", value=f"`Minsc and Boo stand ready!`")
         embed.set_footer(text="Thank you for being a Nitro Supporter!", icon_url=self.discordNitroUrl)
         await ctx.send(embed=embed)
 
