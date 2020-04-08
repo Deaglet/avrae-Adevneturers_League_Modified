@@ -46,6 +46,5 @@ class ThankYou(commands.Cog):
         await ctx.send(embed=embed)
 
 
-U+262x
 def setup(bot):
     bot.add_cog(ThankYou(bot))
