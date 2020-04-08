@@ -23,7 +23,7 @@ class ThankYou(commands.Cog):
         embed.add_field(name = "\U0001FA93", value=f"`Aw shucks, Hux.  Fighting your axe, sucks!`")
         embed.set_footer(text="Thank you for being a Nitro Supporter!", icon_url=self.discordNitroUrl)
         await ctx.send(embed=embed)
-    @commands.command(name='ThatGuyDidIt', aliases=["thatguydidit","Uncle","Uncle Gary","Seth","seth"])
+    @commands.command(name='ThatGuyDidIt', aliases=["thatguydidit","Uncle","Uncle Gary"])
     async def ThatGuyDidIt(self, ctx):
         
         colorEmbed = random.randint(0,3822)
@@ -33,7 +33,19 @@ class ThankYou(commands.Cog):
         embed.add_field(name = "\U0001F9D6", value=f"`If I'm half as bad as I usually am, I'm doing great!`")
         embed.set_footer(text="Thank you for being a Nitro Supporter!", icon_url=self.discordNitroUrl)
         await ctx.send(embed=embed)
+        
+    @commands.command(name='Director', aliases=["director","The Director","the director","Stu"])
+    async def Director(self, ctx):
+        
+        colorEmbed = random.randint(0,3822)
+        embed = discord.Embed()
+        embed.colour = colorEmbed
+        embed.title = "The Director"
+        embed.add_field(name = "\U000262D", value=f"`You people disgust me`")
+        embed.set_footer(text="Thank you for being a Nitro Supporter!", icon_url=self.discordNitroUrl)
+        await ctx.send(embed=embed)
 
 
+U+262x
 def setup(bot):
     bot.add_cog(ThankYou(bot))
