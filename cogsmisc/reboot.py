@@ -31,4 +31,4 @@ class Reboot(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(Graveyard(bot))
+    bot.add_cog(Reboot(bot))
