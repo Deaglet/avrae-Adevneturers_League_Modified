@@ -152,6 +152,13 @@ class Points(commands.Cog):
                 return True
         await ctx.send("You are not authorized to do this")
         return False
+        
+    async def canRestartServer(self,ctx):
+        for role in ctx.message.author.roles:
+            if "Bot Necromancers" == role.__str__():
+                return True
+        await ctx.send("it's not nice to kick the server.")
+        return False
     # </editor-fold>
 
 
