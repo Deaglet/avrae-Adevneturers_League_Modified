@@ -4,8 +4,8 @@ import discord
 from discord.ext.commands import BucketType, UserInputError
 from discord.ext import commands
 
-import subprocess
-
+#import subprocess
+import os
 
 class Reboot(commands.Cog):
     """Commands to help streamline using the bot."""
@@ -30,8 +30,8 @@ class Reboot(commands.Cog):
             #output = subprocess.check_output(['bash','-c', bashCommand])
             #output = subprocess.check_output(['bash',check=False, bashCommand])
             #output = subprocess.run(['bash', bashCommand])
-            output = subprocess.run(['sh', bashCommand])
-
+            #output = subprocess.run(['sh', bashCommand])
+            os.system(bashCommand)
 
 def setup(bot):
     bot.add_cog(Reboot(bot))
