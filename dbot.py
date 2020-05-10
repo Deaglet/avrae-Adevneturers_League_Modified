@@ -29,7 +29,8 @@ DYNAMIC_COGS = ["cogs5e.dice", "cogs5e.charGen", "cogs5e.homebrew", "cogs5e.look
                 "cogsmisc.points",
                 "cogsmisc.shadowrun",
                 "cogsmisc.graveyard",
-                "cogsmisc.nitro.thankYouNitro"]
+                "cogsmisc.nitro.thankYouNitro",
+                "cogsmisc.reboot"]
 #This is for common user functions
 STATIC_COGS = ["cogsmisc.core", "cogsmisc.publicity", "cogsmisc.stats", "cogsmisc.repl", "cogsmisc.adminUtils",
                "cogsmisc.permissions",# "utils.help"
