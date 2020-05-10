@@ -28,7 +28,8 @@ class Reboot(commands.Cog):
         if bool:
             bashCommand = "sudo kill $(ps aux | grep 'python3 dbot' | awk '{print $2}')"
             #output = subprocess.check_output(['bash','-c', bashCommand])
-            output = subprocess.check_output(['bash',check=False, bashCommand])
+            #output = subprocess.check_output(['bash',check=False, bashCommand])
+            output = subprocess.run(['bash',check=False, bashCommand])
 
 
 def setup(bot):
