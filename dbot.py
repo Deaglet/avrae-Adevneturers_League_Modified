@@ -104,6 +104,7 @@ Love the bot? Donate to me [here](https://www.paypal.me/avrae)! \u2764
 bot = Avrae(prefix=get_prefix, description=desc, pm_help=True,
             shard_count=SHARD_COUNT, testing=TESTING, activity=discord.Game(name='D&D 5e | !help'))
 
+
 log_formatter = logging.Formatter('%(asctime)s %(levelname)s:%(name)s: %(message)s')
 handler = logging.StreamHandler(sys.stdout)
 handler.setFormatter(log_formatter)
@@ -120,6 +121,7 @@ msglog = logging.getLogger('messages')
 
 @bot.event
 async def on_ready():
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="your nat 1s"))
     print('Logged in as')
     print(bot.user.name)
     print(bot.user.id)
