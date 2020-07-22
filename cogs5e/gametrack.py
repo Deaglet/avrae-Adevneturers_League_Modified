@@ -555,6 +555,7 @@ class GameTrack(commands.Cog):
         -title [title] - changes the title of the cast. Replaces [sname] with spell name.
         -dur [duration] - changes the duration of any effect applied by the spell.
         int/wis/cha - different skill base for DC/AB (will not account for extra bonuses)"""
+        console.log('cast');
         try:
             await ctx.message.delete()
         except:
