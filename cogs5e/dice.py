@@ -47,6 +47,7 @@ class Dice(commands.Cog):
         if outcome > 1:
             output_str += " +"
         output_str += str(outcome)
+        output_str += "\n ***THE DICE HAVE SPOKEN.***"
         await ctx.send(output_str)
 
     @commands.command(name='roll', aliases=['r'])
