@@ -578,26 +578,27 @@ class BeyondSheetParser:
         has_stat_bonuses = []  # [{type, stat, subtype}]
         for modtype in self.character['modifiers'].values():  # {race: [], class: [], ...}
             for mod in modtype:  # [{}, ...]
-                mod_type = mod['subType']  # e.g. 'strength-score'
-                if mod_type in ignored:
-                    continue
-                if mod['statId']:
-                    has_stat_bonuses.append({'subtype': mod_type, 'type': mod['type'], 'stat': mod['statId']})
+                if mod['isGranted']:
+                    mod_type = mod['subType']  # e.g. 'strength-score'
+                    if mod_type in ignored:
+                        continue
+                    if mod['statId']:
+                        has_stat_bonuses.append({'subtype': mod_type, 'type': mod['type'], 'stat': mod['statId']})
 
-                if mod['type'] == 'bonus':
-                    if mod_type in self.set_calculated_stats:
-                        continue
-                    self.calculated_stats[mod_type] += (mod['value'] or 0)
-                elif mod['type'] == 'damage':
-                    self.calculated_stats[f"{mod_type}-damage"] += (mod['value'] or 0)
-                elif mod['type'] == 'set':
-                    if mod_type in self.set_calculated_stats and self.calculated_stats[mod_type] > (mod['value'] or 0):
-                        continue
-                    self.calculated_stats[mod_type] = (mod['value'] or 0)
-                    self.set_calculated_stats.add(mod_type)
-                elif mod['type'] == 'ignore':
-                    self.calculated_stats[mod_type] = 0
-                    ignored.add(mod_type)
+                    if mod['type'] == 'bonus':
+                        if mod_type in self.set_calculated_stats:
+                            continue
+                        self.calculated_stats[mod_type] += (mod['value'] or 0)
+                    elif mod['type'] == 'damage':
+                        self.calculated_stats[f"{mod_type}-damage"] += (mod['value'] or 0)
+                    elif mod['type'] == 'set':
+                        if mod_type in self.set_calculated_stats and self.calculated_stats[mod_type] > (mod['value'] or 0):
+                            continue
+                        self.calculated_stats[mod_type] = (mod['value'] or 0)
+                        self.set_calculated_stats.add(mod_type)
+                    elif mod['type'] == 'ignore':
+                        self.calculated_stats[mod_type] = 0
+                        ignored.add(mod_type)
         for mod in has_stat_bonuses:
             mod_type = mod['subtype']
             if mod_type in ignored:
