@@ -576,33 +576,34 @@ class BeyondSheetParser:
     def calculate_stats(self):
         ignored = set()
         has_stat_bonuses = []  # [{type, stat, subtype}]
+        modtypes = {1:"",2:""}
         for modtype in self.character['modifiers'].values():  # {race: [], class: [], ...}
             for mod in modtype:  # [{}, ...]
-                if not mod['isGranted'] and "racialTrait" in mod['id']:
-                    print(mod['id'])
-                    print(mod['isGranted'])
+                mod_type = mod['subType']  # e.g. 'strength-score'
+                if mod_type in ignored:
                     continue
-                else:
-                    mod_type = mod['subType']  # e.g. 'strength-score'
-                    if mod_type in ignored:
-                        continue
-                    if mod['statId']:
-                        has_stat_bonuses.append({'subtype': mod_type, 'type': mod['type'], 'stat': mod['statId']})
+                if mod['statId']:
+                    has_stat_bonuses.append({'subtype': mod_type, 'type': mod['type'], 'stat': mod['statId']})
 
-                    if mod['type'] == 'bonus':
-                        if mod_type in self.set_calculated_stats:
-                            continue
-                        self.calculated_stats[mod_type] += (mod['value'] or 0)
-                    elif mod['type'] == 'damage':
-                        self.calculated_stats[f"{mod_type}-damage"] += (mod['value'] or 0)
-                    elif mod['type'] == 'set':
-                        if mod_type in self.set_calculated_stats and self.calculated_stats[mod_type] > (mod['value'] or 0):
-                            continue
-                        self.calculated_stats[mod_type] = (mod['value'] or 0)
-                        self.set_calculated_stats.add(mod_type)
-                    elif mod['type'] == 'ignore':
-                        self.calculated_stats[mod_type] = 0
-                        ignored.add(mod_type)
+                if mod['type'] == 'bonus':
+                    if mod_type in self.set_calculated_stats:
+                        continue
+                    self.calculated_stats[mod_type] += (mod['value'] or 0)
+                    if "racialTrait" in mod['id']:
+                        for val,attrType in modtypes:
+                            if attrType != "" and val == mod['value']:
+                                self.calculated_stats[attrType] -= val
+                        modtypes[mod['value']] = mod_type
+                elif mod['type'] == 'damage':
+                    self.calculated_stats[f"{mod_type}-damage"] += (mod['value'] or 0)
+                elif mod['type'] == 'set':
+                    if mod_type in self.set_calculated_stats and self.calculated_stats[mod_type] > (mod['value'] or 0):
+                        continue
+                    self.calculated_stats[mod_type] = (mod['value'] or 0)
+                    self.set_calculated_stats.add(mod_type)
+                elif mod['type'] == 'ignore':
+                    self.calculated_stats[mod_type] = 0
+                    ignored.add(mod_type)
         for mod in has_stat_bonuses:
             if mod['isGranted'] == 'True':
                 mod_type = mod['subtype']
