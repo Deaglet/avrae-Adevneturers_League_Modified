@@ -578,7 +578,7 @@ class BeyondSheetParser:
         has_stat_bonuses = []  # [{type, stat, subtype}]
         for modtype in self.character['modifiers'].values():  # {race: [], class: [], ...}
             for mod in modtype:  # [{}, ...]
-                if mod['isGranted']:
+                if not mod['isGranted'] and "racialTrait" in mod['id']:
                     print(mod['id'])
                     print(mod['isGranted'])
                     continue
