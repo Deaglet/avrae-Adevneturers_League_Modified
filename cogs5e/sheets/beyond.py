@@ -600,16 +600,17 @@ class BeyondSheetParser:
                         self.calculated_stats[mod_type] = 0
                         ignored.add(mod_type)
         for mod in has_stat_bonuses:
-            mod_type = mod['subtype']
-            if mod_type in ignored:
-                continue
-            stat_mod = self.stat_from_id(mod['stat'])
-            if mod['type'] == 'bonus':
-                self.calculated_stats[mod_type] += stat_mod
-            elif mod['type'] == 'damage':
-                self.calculated_stats[f"{mod_type}-damage"] += stat_mod
-            elif mod['type'] == 'set':
-                self.calculated_stats[mod_type] = stat_mod
+            if mod['isGranted']:
+                mod_type = mod['subtype']
+                if mod_type in ignored:
+                    continue
+                stat_mod = self.stat_from_id(mod['stat'])
+                if mod['type'] == 'bonus':
+                    self.calculated_stats[mod_type] += stat_mod
+                elif mod['type'] == 'damage':
+                    self.calculated_stats[f"{mod_type}-damage"] += stat_mod
+                elif mod['type'] == 'set':
+                    self.calculated_stats[mod_type] = stat_mod
 
     def get_prof(self, proftype):
         if not self.prof:
