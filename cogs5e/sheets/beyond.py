@@ -590,7 +590,7 @@ class BeyondSheetParser:
                         continue
                     self.calculated_stats[mod_type] += (mod['value'] or 0)
                     if "racialTrait" in mod['id']:
-                        for val,attrType in modtypes:
+                        for val,attrType in modtypes.items():
                             if attrType != "" and val == mod['value']:
                                 self.calculated_stats[attrType] -= val
                         modtypes[mod['value']] = mod_type
