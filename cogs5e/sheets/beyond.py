@@ -589,7 +589,7 @@ class BeyondSheetParser:
                     if mod_type in self.set_calculated_stats:
                         continue
                     self.calculated_stats[mod_type] += (mod['value'] or 0)
-                    if "racialTrait" in mod['id'] and not mod['isGranted']:
+                    if "racialTrait" in mod['id'] and not mod['isGranted'] and mod['entityTypeId'] != 1472902489:
                         for val,attrType in modtypes.items():
                             if attrType != "" and val == mod['value']:
                                 self.calculated_stats[attrType] -= val
